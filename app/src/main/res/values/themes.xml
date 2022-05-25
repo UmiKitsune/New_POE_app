@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.POE_app" parent="Theme.AppCompat">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/toolbarColor</item>
+        <item name="colorPrimaryVariant">@color/upperSpace</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="titleTextColor">@color/toolbarText</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:textViewStyle">@style/textViewStyle</item>
+        <item name="android:textColorPrimary">@color/edittext_text_color</item>
+        <item name="colorAccent">@color/login_txt_color</item>
+        <item name="actionBarSize">66dp</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+    </style>
+
+    <style name="textViewStyle">
+        <item name="android:textColor">@color/missions_textColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/toolbarText</item>
+    </style>
+
+    <style name="LogInBtnStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingHorizontal">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColorPrimary">@color/edittext_text_color</item>
+
+    </style>
+
+    <style name="splashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="buttonStyle">@style/LogInBtnStyle</item>
+    </style>
+
+    <style name="logInBackground">
+        <item name="android:src">@drawable/login_background</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:alpha">0.7</item>
+    </style>
+
+</resources>

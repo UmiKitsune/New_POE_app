@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Path of Exile achievements</string>
+    <string name="creature_from_poe">creature from poe</string>
+    <string name="label_main">Path of Exile</string>
+    <string name="label_login">LogIn</string>
+    <string name="login_background_atlas">background atlas</string>
+    <string name="login_text">Введите имя пользователя:</string>
+    <string name="login_hint">UserName</string>
+    <string name="login_btn_txt">Good luck exile</string>
+    <string name="menu_reload_txt">Обновить данные</string>
+    <string name="menu_delete_txt">Удалить выполненные</string>
+    <string name="empty_name_error">Назови свое имя Изгнанник!</string>
+    <string name="subtitle_txt">achievements: </string>
+    <string name="character_1">characte 1</string>
+</resources>

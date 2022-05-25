@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="missions_textColor">#00ccd4</color>
+
+    <color name="toolbarColor">#011926</color>
+    <color name="toolbarText">#dac5ae</color>
+
+    <color name="upperSpace">#02060b</color>
+
+    <color name="login_txt_color">#f0a040</color>
+
+    <color name="edittext_text_color">#d2c092</color>
+
+    <color name="gradient_start">#1e0400</color>
+    <color name="gradient_end">#640e01</color>
+</resources>
