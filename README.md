@@ -11,7 +11,9 @@
   </li>
   <li>e92e</li>
   <li>#e92e</li>
-  <li></li>
+  <li><span class="material-icons">
+delete_outline
+</span></li>
   <li></li>
   <li></li>
 </ul>
