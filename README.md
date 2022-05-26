@@ -9,7 +9,7 @@
       <dd>Невыполненные задания - яркие, выполненные - приглушенные.</dd>
     </dl>
   </li>
-  <li>e92e</li>
+  <li>\e92e</li>
   <li>#e92e</li>
   <li><span class="material-icons">
 delete_outline
