@@ -8,9 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="missions_textColor">#00ccd4</color>
-
-    <color name="toolbarColor">#011926</color>
+    <!--<color name="toolbarColor">#011926</color>-->
+    <color name="toolbarColor">#262a2d</color>
     <color name="toolbarText">#dac5ae</color>
 
     <color name="upperSpace">#02060b</color>
@@ -21,4 +20,24 @@
 
     <color name="gradient_start">#1e0400</color>
     <color name="gradient_end">#640e01</color>
+
+    <!--item colors before Kalandra-->
+    <color name="item_title_text_color">#9ca89d</color>
+    <color name="item_title_bg_color">#032f3a</color>
+
+    <color name="item_description_text_color">#c16928</color>
+    <color name="item_description_bg_color">#02131e</color>
+
+    <color name="missions_textColor">#00ccd4</color>
+    <color name="item_missions_bg_color">#02131e</color>
+
+    <!--item colors Kalandra-->
+    <color name="item_kalandra_title_text_color">#9ca89d</color>
+    <color name="item_kalandra_title_bg_color">#2d323c</color>
+
+    <color name="item_kalandra_description_text_color">#c16928</color>
+    <color name="item_kalandra_description_bg_color">#181e20</color>
+
+    <color name="item_kalandra_missions_textColor">#9ca3ad</color>
+    <color name="item_kalandra_missions_bg_color">#181e20</color>
 </resources>

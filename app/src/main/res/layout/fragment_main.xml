@@ -10,17 +10,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_sentinel"
+        android:src="@drawable/main_background_lake_of_kalandra"
         android:scaleType="centerCrop"
         android:contentDescription="@string/creature_from_poe"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/sentinel_characters"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center"
-        android:contentDescription="@string/character_1"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
