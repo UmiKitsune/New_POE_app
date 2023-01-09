@@ -4,5 +4,6 @@ data class Title(
     val titleId: Int,
     val titleName: String,
     val description: String,
+    val hmCompleted: String,
     val isCompleted: Boolean
     )

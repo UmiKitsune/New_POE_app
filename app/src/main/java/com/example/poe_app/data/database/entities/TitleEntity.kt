@@ -11,5 +11,6 @@ data class TitleEntity(
     val titleId: Int,
     val titleName: String,
     val description: String,
+    val hmCompleted: String,
     val isCompleted: Boolean
 )

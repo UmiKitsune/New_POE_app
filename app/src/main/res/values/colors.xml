@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--<color name="toolbarColor">#011926</color>-->
-    <color name="toolbarColor">#262a2d</color>
+    <!--<color name="toolbarColor">#262a2d</color>-->
+    <color name="toolbarColor">#351B1B</color>
     <color name="toolbarText">#dac5ae</color>
 
     <color name="upperSpace">#02060b</color>
@@ -40,4 +41,14 @@
 
     <color name="item_kalandra_missions_textColor">#9ca3ad</color>
     <color name="item_kalandra_missions_bg_color">#181e20</color>
+
+    <!--item colors The Forbidden Sanctum-->
+    <color name="item_forbidden_title_bg_color">#120200</color>
+    <!--<color name="item_forbidden_title_text_color">#eecc86</color>-->
+    <color name="item_forbidden_title_text_color">#c69865</color>
+
+    <color name="item_forbidden_description_bg_color">#231208</color>
+
+    <color name="item_forbidden_missions_bg_color">#231208</color>
+    <color name="item_forbidden_missions_text_color">#fefcce</color>
 </resources>

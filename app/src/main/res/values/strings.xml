@@ -12,4 +12,8 @@
     <string name="empty_name_error">Назови свое имя Изгнанник!</string>
     <string name="subtitle_txt">achievements: </string>
     <string name="character_1">characte 1</string>
+    <string name="achievements">achievements</string>
+    <string name="settings">settings</string>
+    <string name="news">news</string>
+    <string name="done_mark">done mark</string>
 </resources>

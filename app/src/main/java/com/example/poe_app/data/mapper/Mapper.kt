@@ -7,7 +7,13 @@ import com.example.poe_app.data.url.models.Title
 
 object Mapper {
     fun toTitleEntity(title: Title): TitleEntity =
-        TitleEntity(title.titleId, title.titleName, title.description, title.isCompleted)
+        TitleEntity(
+            title.titleId,
+            title.titleName,
+            title.description,
+            title.hmCompleted,
+            title.isCompleted
+        )
 
     fun toMissionEntity(mission: Mission): MissionEntity =
         MissionEntity(mission.missionId, mission.missionText, mission.isClicked, mission.titleId)

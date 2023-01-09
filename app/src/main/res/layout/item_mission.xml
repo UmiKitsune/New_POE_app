@@ -1,50 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_margin="5dp">
 
-    <TextView
-        android:id="@+id/itemTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutForImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.9"
-        tools:text="Title"
-        android:textSize="28sp"
-        android:textColor="@color/item_title_text_color"
-        android:background="@color/item_kalandra_title_bg_color"
-        android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/title_bg_img"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.13"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"/>
+
+        <TextView
+            android:id="@+id/itemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.9"
+            android:paddingStart="10dp"
+            android:fontFamily="@font/dihjauti_s_regular"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:paddingTop="10dp"
+            android:textColor="@color/item_forbidden_title_text_color"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/completedImg"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/itemHowManyCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.9"
+            android:paddingStart="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/item_forbidden_title_text_color"
+            android:textSize="18sp"
+            android:fontFamily="@font/dihjauti_regular"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            app:layout_constraintTop_toBottomOf="@id/itemTitle"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="(2 / 4)" />
+
+        <ImageView
+            android:id="@+id/completedImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|end"
+            android:contentDescription="@string/done_mark"
+            android:paddingEnd="10dp"
+            android:src="@drawable/ic_check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/itemDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="description"
         android:alpha="0.9"
-        android:paddingVertical="6dp"
+        android:background="@color/item_forbidden_description_bg_color"
         android:paddingHorizontal="10dp"
-        android:textSize="17sp"
+        android:paddingVertical="6dp"
         android:textColor="@color/item_description_text_color"
-        android:background="@color/item_kalandra_description_bg_color"
-        app:layout_constraintTop_toBottomOf="@id/itemTitle"
+        android:shadowColor="#000000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="5"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/layoutForImg"
+        tools:text="description" />
 
     <LinearLayout
         android:id="@+id/itemLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:background="@color/item_forbidden_missions_bg_color"
         android:orientation="vertical"
-        android:alpha="0.9"
         android:padding="10dp"
-        android:background="@color/item_kalandra_missions_bg_color"
-        app:layout_constraintTop_toBottomOf="@id/itemDescription"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/itemDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

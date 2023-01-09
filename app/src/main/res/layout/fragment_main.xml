@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/main_background_lake_of_kalandra"
+        android:src="@drawable/background_forbidden_sanctum"
         android:scaleType="centerCrop"
         android:contentDescription="@string/creature_from_poe"/>
 

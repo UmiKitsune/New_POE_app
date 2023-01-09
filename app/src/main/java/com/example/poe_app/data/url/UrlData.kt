@@ -24,80 +24,105 @@ object UrlData {
     val titles: MutableList<Title> = CopyOnWriteArrayList()
     val missions: MutableList<Mission> = CopyOnWriteArrayList()
 
-     suspend fun getData(userName: String, language: String) = coroutineScope{
-         withContext(Dispatchers.IO) {
-             val content = async {
-                 val builder = StringBuilder()
-                 val url = URL(String.format(POE_URL, language, userName))
-                 val connection = url.openConnection() as HttpsURLConnection
-                 try {
-                     connection.inputStream.bufferedReader().use { reader ->
-                         var line = reader.readLine()
-                         while (line != null) {
-                             builder.append(line)
-                             line = reader.readLine()
-                         }
-                     }
-                 } catch (e: MalformedURLException) {
-                     e.printStackTrace()
-                 } catch (e: IOException) {
-                     e.printStackTrace()
-                 } finally {
-                     connection.disconnect()
-                 }
-                 return@async builder.toString()
-             }.await()
+    var i = 0
+    val list = mutableListOf<Pair<Int, Int?>>()
 
-             val splitContent = async {
-                 val start = "<div class=\"achievement-list\">"
-                 val end = "<div class=\"profile-details\">"
-                 val pattern: Pattern = Pattern.compile("$start(.*?)$end")
-                 val matcher = pattern.matcher(content)
-                 var split = ""
-                 while (matcher.find()) {
-                     split = matcher.group(1)!!
-                 }
-                 return@async split
-             }.await()
+    suspend fun getData(userName: String, language: String) = coroutineScope {
+        withContext(Dispatchers.IO) {
+            val content = async {
+                val builder = StringBuilder()
+                val url = URL(String.format(POE_URL, language, userName))
+                val connection = url.openConnection() as HttpsURLConnection
+                try {
+                    connection.inputStream.bufferedReader().use { reader ->
+                        var line = reader.readLine()
+                        while (line != null) {
+                            builder.append(line)
+                            line = reader.readLine()
+                        }
+                    }
+                } catch (e: MalformedURLException) {
+                    e.printStackTrace()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                } finally {
+                    connection.disconnect()
+                }
+                return@async builder.toString()
+            }.await()
 
-             async {
-                 val titlePattern = Pattern.compile(
-                     "(?:clearfix(| incomplete)?\".*?\"></a>.+?<h2 class=.+?>(.+?)<.*?completion\")",
-                     Pattern.DOTALL
-                 )
-                 val titleMatcher = titlePattern.matcher(splitContent)
-                 var titleId = 0
-                 var missionId = 0
-                 while (titleMatcher.find()) {
+            val splitContent = async {
+                val start = "<div class=\"achievement-list\">"
+                val end = "<div class=\"profile-details\">"
+                val pattern: Pattern = Pattern.compile("$start(.*?)$end")
+                val matcher = pattern.matcher(content)
+                var split = ""
+                while (matcher.find()) {
+                    split = matcher.group(1)!!
+                }
+                return@async split
+            }.await()
 
-                     //ОПИСАНИЕ
-                     val descriptionPattern = Pattern.compile("<span class=\"text\">(.*?)</span>")
-                     val descriptionMatcher = descriptionPattern.matcher(titleMatcher.group())
-                     while (descriptionMatcher.find()) {
+            async {
+                val titlePattern = Pattern.compile(
+                    //"(?:clearfix(| incomplete)?\".*?\"></a>.+?<h2 class=.+?>(.+?)<.*?completion\")",
+                    //"(?:achievement clearfix(| incomplete)\".*?<h2 class=.+?>(?<title>.+?)</h2>.+?(?:(| \"completion-detail\")><span class=\"(?:| completion-incomplete)\">(?<completedMissions>.+?)</span>/(?<missionsToComplete>.+?)</h2>)?.*?completion\")",
+                    "(?:achievement clearfix ?(?<isCompleted>incomplete)?\".*?<h2 class=.+?>(?<title>.+?)</h2>.+?(?:\"completion-detail\"><span class=\"(?: completion-incomplete)?\">(?<completedMissions>.+?)</span>/(?<missionsToComplete>.+?)</h2>.*?)?completion\")",
+                    Pattern.DOTALL
+                )
+                    //completion-detail
+                val titleMatcher = titlePattern.matcher(splitContent)
+                var titleId = 0
+                var missionId = 0
+                while (titleMatcher.find()) {
 
-                         //ТАЙТЛЫ
-                         val completed = titleMatcher.group(1) != " incomplete"
-                         titles.add(Title(
-                             titleId,
-                             titleMatcher.group(2)!!,
-                             descriptionMatcher.group(1)!!,
-                             completed
-                         ))
-                     }
+                    //ОПИСАНИЕ
+                    val descriptionPattern = Pattern.compile("<span class=\"text\">(?<description>.*?)</span>")
+                    val descriptionMatcher = descriptionPattern.matcher(titleMatcher.group())
 
-                     //МИССИИ
-                     val missionPattern = Pattern.compile("<li class=\"(|finished)?\">(.+?)</li>")
-                     val missionMatcher = missionPattern.matcher(titleMatcher.group())
-                     while (missionMatcher.find()) {
-                         val isClicked = missionMatcher.group(1) == "finished"
-                         missions.add(Mission(missionId, missionMatcher.group(2)!!, isClicked, titleId))
-                         missionId++
-                     }
+                    //СКОЛЬКО ЗАДАНИЙ ИЗ ВСЕХ ВЫПОЛНЕННО
+                    val howManyCompleted = if (titleMatcher.group("completedMissions").isNullOrEmpty()) {
+                        ""
+                    } else {
+                        "${titleMatcher.group("completedMissions")} / ${titleMatcher.group("missionsToComplete")}"
+                    }
 
-                     titleId++
-                 }
-             }.await()
 
-         }
-     }
+                    while (descriptionMatcher.find()) {
+                        //ТАЙТЛЫ
+                        //val completed = titleMatcher.group("isCompleted") != " incomplete"
+                        val completed = titleMatcher.group("isCompleted").isNullOrEmpty()
+
+                        titles.add(
+                            Title(
+                                titleId,
+                                titleMatcher.group("title")!!,
+                                descriptionMatcher.group("description")!!,
+                                howManyCompleted,
+                                completed
+                            )
+                        )
+                    }
+
+                    //МИССИИ
+                    val missionPattern = Pattern.compile("<li class=\"(|finished)?\">(.+?)</li>")
+                    val missionMatcher = missionPattern.matcher(titleMatcher.group())
+                    while (missionMatcher.find()) {
+                        val isClicked = missionMatcher.group(1) == "finished"
+                        missions.add(
+                            Mission(
+                                missionId,
+                                missionMatcher.group(2)!!,
+                                isClicked,
+                                titleId
+                            )
+                        )
+                        missionId++
+                    }
+                    titleId++
+                }
+            }.await()
+        }
+    }
+
 }

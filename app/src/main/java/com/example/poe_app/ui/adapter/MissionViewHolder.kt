@@ -1,5 +1,6 @@
 package com.example.poe_app.ui.adapter
 
+import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,14 @@ class MissionViewHolder(
 
     fun bind(data: TitleWithMissionsEntity) {
         with(binding) {
+            if (data.title.isCompleted) {
+                completedImg.visibility = View.VISIBLE
+            } else {
+                completedImg.visibility = View.GONE
+            }
+
             itemTitle.text = data.title.titleName
+            itemHowManyCompleted.text = data.title.hmCompleted
             itemDescription.text = data.title.description
 
             itemLinearLayout.removeAllViews()

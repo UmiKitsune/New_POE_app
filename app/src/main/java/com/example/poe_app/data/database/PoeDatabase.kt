@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 import com.example.poe_app.data.database.entities.MissionEntity
 import com.example.poe_app.data.database.entities.TitleEntity
 
-@Database(entities = [TitleEntity::class, MissionEntity::class], version = 1, exportSchema = false)
+@Database(entities = [TitleEntity::class, MissionEntity::class], version = 4, exportSchema = false)
 abstract class PoeDatabase: RoomDatabase() {
     companion object{
         private var db: PoeDatabase? = null
-        private const val DB_NAME = "poe.db"
+        private const val DB_NAME = "poeLast.db"
         private val LOCK = Any()
 
         fun getInstance(context: Context): PoeDatabase {
@@ -23,6 +23,7 @@ abstract class PoeDatabase: RoomDatabase() {
                         PoeDatabase::class.java,
                         DB_NAME
                     )
+                        .fallbackToDestructiveMigration()
                         .build()
                 db = instance
                 return instance
