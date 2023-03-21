@@ -14,6 +14,7 @@ import com.example.poe_app.presentation.MainFragmentViewModel
 import com.example.poe_app.presentation.ViewModelFactory
 import com.example.poe_app.presentation.utils.MyStates
 import com.example.poe_app.ui.adapter.MissionAdapter
+import kotlin.properties.Delegates
 
 class MainFragment : Fragment() {
 
@@ -22,6 +23,7 @@ class MainFragment : Fragment() {
     private lateinit var preferences: SharedPreferences
     private val args: MainFragmentArgs by navArgs()
     private val viewModel: MainFragmentViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private var count by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -34,12 +36,12 @@ class MainFragment : Fragment() {
         viewModel.sendUserName(args.userName, args.language)
 
         viewModel.countCompleted.observe(viewLifecycleOwner, {
-            val count = it ?: 0
+            count = it ?: 0
             (requireActivity() as AppCompatActivity).supportActionBar?.subtitle = "${getString(R.string.subtitle_txt)} $count / 40"
         })
 
         viewModel.dataFromDB.observe(viewLifecycleOwner, {
-            if (it.isEmpty()) {
+            if (it.isEmpty() && count != 40) {
                 viewModel.sendUserName(args.userName, args.language)
             } else {
                 adapter.missions = it
@@ -74,7 +76,11 @@ class MainFragment : Fragment() {
                 viewModel.upLoad(args.userName, args.language)
             }
             R.id.deleteCompleted -> {
-                viewModel.deleteCompleted()
+                if(count == 40) {
+                    adapter.missions = emptyList()
+                } else {
+                    viewModel.deleteCompleted()
+                }
             }
         }
         return super.onOptionsItemSelected(item)
