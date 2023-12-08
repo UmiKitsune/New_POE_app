@@ -2,14 +2,17 @@ package com.example.poe_app.ui
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.poe_app.R
-import kotlin.properties.Delegates
 
 const val POE_APP_PREFERENCES = "POE_APP_PREFERENCES"
 const val PREF_USERNAME_KEY = "PREF_USERNAME_KEY "
@@ -21,7 +24,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val t = TextView(this, null, 0, R.style.splashScreenTheme)
+
+        t.setTextAppearance(R.style.splashScreenTheme)
+        t.setBackgroundResource(R.drawable.splash_screen_affliction3)
+
+
         super.onCreate(savedInstanceState)
+
         setTheme(R.style.Theme_POE_app)
         setContentView(R.layout.activity_main)
 
@@ -56,6 +67,4 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-
-    //TODO: сделать интерфейс, есть actionBar or not + поменять actionBar на ToolBar?
 }

@@ -10,7 +10,7 @@
         android:id="@+id/layoutForImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_bg_img"
+        android:background="@drawable/title_bg_affliction"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,28 +21,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.13"/>
+            app:layout_constraintGuide_percent="0.05"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineEnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9"/>
+            app:layout_constraintGuide_percent="0.98"/>
 
         <TextView
             android:id="@+id/itemTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:alpha="0.9"
-            android:paddingStart="10dp"
             android:fontFamily="@font/dihjauti_s_regular"
             android:shadowColor="#000000"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="5"
-            android:paddingTop="10dp"
-            android:textColor="@color/item_forbidden_title_text_color"
+            android:paddingTop="13dp"
+            android:textColor="@color/item_affliction_title_text_color"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toTopOf="parent"
@@ -54,9 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0.9"
-            android:paddingStart="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/item_forbidden_title_text_color"
+            android:paddingBottom="12dp"
+            android:textColor="@color/item_affliction_title_text_color"
             android:textSize="18sp"
             android:fontFamily="@font/dihjauti_regular"
             android:shadowColor="#000000"
@@ -83,35 +81,48 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/itemDescription"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/descriptionImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.9"
-        android:background="@color/item_forbidden_description_bg_color"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="6dp"
-        android:textColor="@color/item_description_text_color"
-        android:shadowColor="#000000"
-        android:shadowDx="5"
-        android:shadowDy="5"
-        android:shadowRadius="5"
-        android:textSize="17sp"
+        android:orientation="vertical"
+        android:alpha="0.7"
+        android:background="@color/item_affliction_description_bg_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutForImg"
-        tools:text="description" />
+        app:layout_constraintTop_toBottomOf="@id/layoutForImg">
+
+        <TextView
+            android:id="@+id/itemDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:textColor="@color/item_affliction_description_text_color"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:textSize="17sp"
+            tools:text="description"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/itemLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0.7"
-        android:background="@color/item_forbidden_missions_bg_color"
+        android:alpha="0.8"
+        android:background="@color/item_affliction_missions_bg_color"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemDescription" />
+        app:layout_constraintTop_toBottomOf="@id/descriptionImg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

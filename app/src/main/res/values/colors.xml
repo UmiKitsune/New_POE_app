@@ -10,7 +10,7 @@
 
     <!--<color name="toolbarColor">#011926</color>-->
     <!--<color name="toolbarColor">#262a2d</color>-->
-    <color name="toolbarColor">#351B1B</color>
+    <color name="toolbarColor">#1b150e</color>
     <color name="toolbarText">#dac5ae</color>
 
     <color name="upperSpace">#02060b</color>
@@ -22,7 +22,7 @@
     <color name="gradient_start">#1e0400</color>
     <color name="gradient_end">#640e01</color>
 
-    <!--item colors before Kalandra-->
+    <!-- item colors before Kalandra
     <color name="item_title_text_color">#9ca89d</color>
     <color name="item_title_bg_color">#032f3a</color>
 
@@ -32,7 +32,7 @@
     <color name="missions_textColor">#00ccd4</color>
     <color name="item_missions_bg_color">#02131e</color>
 
-    <!--item colors Kalandra-->
+    item colors Kalandra
     <color name="item_kalandra_title_text_color">#9ca89d</color>
     <color name="item_kalandra_title_bg_color">#2d323c</color>
 
@@ -42,13 +42,39 @@
     <color name="item_kalandra_missions_textColor">#9ca3ad</color>
     <color name="item_kalandra_missions_bg_color">#181e20</color>
 
-    <!--item colors The Forbidden Sanctum-->
+    item colors The Forbidden Sanctum
     <color name="item_forbidden_title_bg_color">#120200</color>
-    <!--<color name="item_forbidden_title_text_color">#eecc86</color>-->
     <color name="item_forbidden_title_text_color">#c69865</color>
 
     <color name="item_forbidden_description_bg_color">#231208</color>
 
     <color name="item_forbidden_missions_bg_color">#231208</color>
     <color name="item_forbidden_missions_text_color">#fefcce</color>
+
+    item colors Crucible
+    <color name="item_crucible_title_text_color">#da7452</color>
+
+    <color name="item_crucible_description_bg_color">#231208</color>
+
+    <color name="item_crucible_missions_bg_color">#120200</color>
+    <color name="item_crucible_missions_text_color">#ffe51a</color>
+
+    item colors Trial of the ancestors
+    <color name="item_ancestors_title_text_color">#84b2c2</color>
+
+    <color name="item_ancestors_description_text_color">#85b3c3</color>
+
+    <color name="item_ancestors_missions_bg_color">#202b1d</color>
+    <color name="item_ancestors_missions_text_color">#bcf0d8</color> -->
+
+    <!--item colors Affliction-->
+    <color name="item_affliction_title_text_color">#eedfc3</color>
+
+    <color name="item_affliction_description_text_color">#ad6429</color>
+    <color name="item_affliction_description_bg_color">#000000</color>
+
+    <color name="item_affliction_missions_bg_color">#000000</color>
+    <color name="item_affliction_missions_text_color">#e195fd</color>
+
+
 </resources>
